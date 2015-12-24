@@ -1,0 +1,110 @@
+﻿<html>
+
+<head/>
+
+<body>
+
+<p><h1> С помощью алгоритма Брезенхема построить 11 отрезков прямой из точки (0,0) </h1></p>
+<p><h1> и тангенсами угла наклона от 0 до -1 (0, -0.1, -0.2,..., -0.9, -1) </h1></p>
+
+<canvas id='less01' width='480' height='320'>
+	
+	<script>
+		var canvas = document.getElementById('less01');
+		var ctx = canvas.getContext('2d');
+		ctx.fillStyle='#00BBAA';
+
+		var k = 3;
+		for (j=0; j<11; j++) 
+			{
+			var y = 0;
+			var d = 0;
+			for (x=0; x<100; x++) 
+				{
+				if (d>3) 
+					{ 
+					y+=1; d-=10; 
+					}
+				ctx.fillRect(k*x, k*y, k*1, k*1);
+				d+=j;
+				}
+			}
+		ctx.restore;
+	</script>
+</canvas>
+
+
+<p><h1> Построить окружность с радиусом 53 и с задаваемым радиусом</h1></p>
+<p><h1>   с помощью алгоритма Брезенхема для окружностей </h1></p>
+
+<canvas id='less01.1' width='480' height='320'>
+	
+	<script>
+
+		var canvas = document.getElementById('less01.1');
+
+		var ctx = canvas.getContext('2d');
+
+		ctx.fillStyle='#000076';
+
+		
+var dfs = 6;
+                var dfd = -202;
+
+		var F = -103;
+		var x0=60, y0=60;
+
+		var x = -53, y = 0;
+
+		while (x+y<0) 
+			{
+	
+			ctx.fillRect(x0+x, y0+y, 3, 3);
+	
+			ctx.fillRect(x0-x, y0+y, 3, 3);
+
+			ctx.fillRect(x0+x, y0-y, 3, 3);
+
+			ctx.fillRect(x0-x, y0-y, 3, 3);
+	
+			ctx.fillRect(y0+y, x0+x, 3, 3);
+	
+			ctx.fillRect(y0-y, x0+x, 3, 3);
+
+			ctx.fillRect(y0+y, x0-x, 3, 3);
+	
+			ctx.fillRect(y0-y, x0-x, 3, 3);
+
+			if (F>0) 
+				{
+	
+				x++;
+	
+				F+=dfd;
+	
+				dfd+=4;
+	
+				} 
+			else 	
+				{
+
+				F+=dfs;
+
+				}
+
+			dfd+=4;
+	
+			dfs+=4;
+	
+			y++;
+
+			}
+
+		ctx.restore;	
+	</script>
+
+</canvas>
+
+</body>
+
+</html>
